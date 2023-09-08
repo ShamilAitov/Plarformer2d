@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Coin : MonoBehaviour
 {
-    public void OnDestroy()
+    public event UnityAction <Coin> Collected;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.TryGetComponent<Player>(out Player player))
+        {
+            Collected?.Invoke(this);
+            Destroy(gameObject);
+        }
     }
 }

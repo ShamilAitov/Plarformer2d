@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,6 +13,8 @@ public class Player : MonoBehaviour
     private Vector2 _moveVector;
     private Animator _animator;
     private bool _faceRight = true;
+    private int _animSpeed = Animator.StringToHash("Speed");
+    private int _animJump = Animator.StringToHash("Jump");
 
     private void Start()
     {
@@ -28,7 +32,7 @@ public class Player : MonoBehaviour
     private void Walk()
     {
         _moveVector.x = Input.GetAxis("Horizontal");
-        _animator.SetFloat("Speed", Mathf.Abs(_moveVector.x));
+        _animator.SetFloat(_animSpeed, Mathf.Abs(_moveVector.x));
         _rigidbody.velocity = new Vector2(_moveVector.x * _speed, _rigidbody.velocity.y);
     }
 
@@ -46,7 +50,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jump);
-            _animator.SetTrigger("Jump");
+            _animator.SetTrigger(_animJump);
         }
     }
 }
