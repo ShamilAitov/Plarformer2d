@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CoinCollectingTrigger : MonoBehaviour
+public class Wallet : MonoBehaviour
 {
     [SerializeField] private int _numberCoins;
 
@@ -27,7 +27,6 @@ public class CoinCollectingTrigger : MonoBehaviour
     private void OnCollected(Coin coin)
     {
         _numberCoins++;
-        _coins.Remove(coin);
     }
 
 }

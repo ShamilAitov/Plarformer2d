@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private Transform[] _points;
     private int _currentPoint;
 
-    void Start()
+    private void Start()
     {
         _points = new Transform[_paht.childCount];
 
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         Transform target = _points[_currentPoint];
 
