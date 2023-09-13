@@ -18,7 +18,7 @@ public class Wallet : MonoBehaviour
         }
     }
 
-    public void Init(Coin coin)
+    public void GetCoin(Coin coin)
     {
         coin.Collected += OnCollected;
         _coins.Add(coin);

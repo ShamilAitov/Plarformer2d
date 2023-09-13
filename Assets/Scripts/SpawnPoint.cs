@@ -22,7 +22,7 @@ public class SpawnCoins : MonoBehaviour
         {
             _spawnCoins[i] = _spawns.GetChild(i);
             Coin coin = Instantiate(_prefab, _spawnCoins[i].position, Quaternion.identity);
-            _wallet.Init(coin);
+            _wallet.GetCoin(coin);
         }
     }
 }
